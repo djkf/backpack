@@ -418,7 +418,7 @@ class BpkCalendarWeek extends Component<Props> {
               <DateComponent
                 date={date}
                 modifiers={dateModifiers}
-                aria-label={formatDateFull(date)}
+                {...(!isKeyboardFocusable ? {'aria-label': formatDateFull(date)}: {})}
                 onClick={onDateClick}
                 onDateKeyDown={onDateKeyDown}
                 preventKeyboardFocus={preventKeyboardFocus}

@@ -41,6 +41,7 @@ import {
   WeekExample,
   FocusedDateInThePastExample,
   RangeDateCalendarExample,
+  ToggleExample,
 } from './examples';
 import { BpkCalendarContainerMock } from './stories-utils';
 
@@ -96,6 +97,7 @@ VisualTestWithZoom.args = {
   zoomEnabled: true
 };
 export const VisualTestRange = RangeDateCalendarExample;
+export const Toggle = ToggleExample;
 export const VisualTestRangeWithZoom = VisualTestRange.bind({});
 VisualTestRangeWithZoom.args = {
   zoomEnabled: true

@@ -39,6 +39,7 @@ import {
   RangeExample,
   SplitWeekRangeExample,
   DefaultExampleWithCustomHeight,
+  ToggleExample,
 } from './examples';
 import { BpkScrollableCalendarMock } from './stories-utils';
 
@@ -105,3 +106,4 @@ VisualTestRangeWithZoom.args = {
   zoomEnabled: true
 };
 
+export const Toggle = ToggleExample;

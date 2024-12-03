@@ -39,6 +39,7 @@ import {
   startOfDay,
   startOfMonth,
 } from './date-utils';
+import { memoize } from './utils';
 
 import type { SelectionConfiguration } from './custom-proptypes';
 
@@ -367,6 +368,7 @@ const withCalendarState = <P extends object>(Calendar: ComponentType<P>) => {
 
     render() {
       const {
+        formatDateFull,
         maxDate,
         minDate,
         onDateSelect,
@@ -394,6 +396,7 @@ const withCalendarState = <P extends object>(Calendar: ComponentType<P>) => {
           preventKeyboardFocus={this.state.preventKeyboardFocus}
           focusedDate={sanitisedFocusedDate}
           {...(calendarProps as P)}
+          formatDateFull={memoize(formatDateFull)}
           minDate={sanitisedMinDate}
           maxDate={sanitisedMaxDate}
           selectionConfiguration={selectionConfiguration}

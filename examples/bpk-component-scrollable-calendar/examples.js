@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-import { Component } from 'react';
+import { Component, useState } from 'react';
 
 import { endOfMonth } from 'date-fns/endOfMonth';
 import { startOfMonth } from 'date-fns/startOfMonth';
@@ -366,6 +366,28 @@ const PastCalendarExample = () => (
   />
 );
 
+const ToggleExample = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return isOpen ? (
+    <div>
+      <button type="button" onClick={() => setIsOpen(false)}>Close</button>
+      <BpkScrollableCalendarGridList
+    month={new Date()}
+    weekStartsOn={1}
+    daysOfWeek={weekDays}
+    onDateClick={action('Clicked day')}
+    formatMonth={formatMonth}
+    formatDateFull={formatDateFull}
+    DateComponent={BpkScrollableCalendarDate}
+    minDate={DateUtils.addDays(new Date(), -1)}
+    maxDate={DateUtils.addMonths(new Date(), 12)}
+  />
+    </div>
+  // eslint-disable-next-line react/button-has-type
+  ) : (<button type="button" onClick={() => setIsOpen(true)}>Open</button>);
+};
+
 export {
   DefaultExample,
   DefaultExampleWithCustomHeight,
@@ -385,4 +407,5 @@ export {
   ScrollableCalendarGridExample,
   ScrollableCalendarGridListExample,
   PastCalendarExample,
+  ToggleExample,
 };

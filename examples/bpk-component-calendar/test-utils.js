@@ -16,9 +16,42 @@
  * limitations under the License.
  */
 
+/*
+
+398 calls
+312 dupes
+ 86
+*/
+
 import { format } from 'date-fns/format';
 
-export const formatDateFull = (date) => format(date, 'EEEE, do MMMM yyyy');
+const listOfDates = [];
+
+const heavyComputation = (n) => {
+  let sum = 0;
+
+  for (let i = 1; i <= n; i++) {
+    sum += i * i;
+  }
+
+  return sum;
+};
+
+export const formatDateFull = (date) => {
+  // console.log('formatDateFull called', date);
+  if (listOfDates.find((d) => d === date)) {
+    // console.log('duplicated date!')
+  } else {
+    listOfDates.push(date);
+  }
+
+  heavyComputation(20000);
+
+  const result = format(date, 'EEEE, do MMMM yyyy');
+
+  // console.log(result);
+  return result;
+}
 export const formatDateFullArabic = (date) => {
   const dateString = 'EEEE, dd، MMMM، yyyy';
   const newString = dateString.replace('yyyy', date.getUTCFullYear());

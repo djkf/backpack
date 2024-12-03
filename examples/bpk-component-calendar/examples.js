@@ -15,6 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { useState } from 'react';
 import { addMonths } from 'date-fns/addMonths';
 import { startOfDay } from 'date-fns/startOfDay';
 
@@ -316,6 +317,17 @@ const RangeDateCalendarExample = () => (
   />
 );
 
+const ToggleExample = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return isOpen ? (
+    <div>
+      <button onClick={() => setIsOpen(false)}>Close</button>
+      <RangeDateCalendarExample />
+    </div>
+  ) : (<button onClick={() => setIsOpen(true)}>Open</button>);
+};
+
 export {
   DefaultExample,
   CalendarNavExample,
@@ -336,4 +348,5 @@ export {
   WeekExample,
   FocusedDateInThePastExample,
   RangeDateCalendarExample,
+  ToggleExample,
 };
